@@ -7,26 +7,26 @@
 import cdsapi
 c = cdsapi.Client()
 
-yearStart = 2020
-yearEnd = 2020
-monthStart = 3
-monthEnd = 3
+yearStart = 2018
+yearEnd = 2019
+monthStart = 5
+monthEnd = 5 
 
 for year in list(range(yearStart, yearEnd + 1)):
     
     requestMonthList = []
     for month in list(range(monthStart, monthEnd + 1)):
         # we submit a data request for the current year
-        target = "era5_edna_ea_"+str(year)+f"{month:02d}"+"_sfc.nc"  
+        target = "J:/REANALYSES/ERA5/T2m_1h/era5_edna_ea_"+str(year)+f"{month:02d}"+"_sfc.nc"  
         c.retrieve(
             'reanalysis-era5-single-levels',
             {
                 'product_type':'reanalysis',
-                'variable':'total_precipitation',
+                'variable':'2m_temperature',
                 'year':year,
                 'month':month,
                 'day':[
-                    '02','03',
+                    '01','02','03',
                     '04','05','06',
                     '07','08','09',
                     '10','11','12',
